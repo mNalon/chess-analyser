@@ -23,9 +23,9 @@ const tiles = (reverse) => {
   return tiles
 } 
 
-function Chessboard ({ size, reverse=false }) {
+function Chessboard ({ reverse=false }) {
   return (
-    <div style={{width: size, height: size}} className={styles.board}>
+    <div className={styles.board}>
       { tiles(reverse) }
     </div>
   )
