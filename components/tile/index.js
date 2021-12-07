@@ -1,3 +1,6 @@
+
+import propTypes from 'prop-types'
+
 import styles from './Tile.module.css'
 
 const blacks = [
@@ -22,14 +25,25 @@ const blacks = [
 //   'a8', 'c8', 'e8', 'g8'
 // ]
 
-function Tile ({ row, column }) {
+function Tile ({ row, column, piece, onTileOver }) {
   let tileClass = styles.white
 
   if (blacks.includes(`${column}${row}`)) {
     tileClass = styles.black
   }
 
-return <div className={tileClass} />
+  return (
+    <div className={tileClass} onMouseOver={(e) => {onTileOver(row, column)}} >
+      { piece }
+    </div>
+  )
+}
+
+Tile.propTypes = {
+  row: propTypes.string.isRequired,
+  column: propTypes.string.isRequired,
+  piece: propTypes.node,
+  onTileOver: propTypes.func
 }
 
 export { Tile }
